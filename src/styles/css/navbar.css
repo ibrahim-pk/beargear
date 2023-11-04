@@ -1,0 +1,37 @@
+.navbar {
+    background-color: #001529; /* Set your desired background color */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Set your desired maximum width */
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding to create some space around the content */
+  }
+  
+  .left-menu {
+    flex: 1; /* Make the left menu expand to fill available space */
+  }
+  
+  .right-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .left-menu {
+      margin-bottom: 20px; /* Add space between the left and right menus on smaller screens */
+    }
+  
+    .right-menu {
+      margin-top: 20px; /* Add space between the left and right menus on smaller screens */
+    }
+  }
+  
