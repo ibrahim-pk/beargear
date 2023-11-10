@@ -39,8 +39,8 @@ const Categories = () => {
             <Input />
           </Form.Item>
           <Form.Item
-            label="Description"
-            name="description"
+            label="Image Link"
+            name="imageLink"
           >
             <Input.TextArea />
           </Form.Item>

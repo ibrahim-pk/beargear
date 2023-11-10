@@ -96,6 +96,11 @@ const BestProduct=()=> {
       {
         loader&&<Spinner />
       }
+      <div>
+        <img style={{
+          width:'100%'
+        }} src="/image/banner1.png" alt="" />
+      </div>
       <h2 style={{ padding: "20px 0 0 20px" }}>Top Rated Product</h2>
       <div className="top-rated-carousel-item">
       <BestSellerCarousel bestSellers={topProduct} />

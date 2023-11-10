@@ -7,8 +7,8 @@ const RecentOrdersTable = ({ data }) => {
   const columns = [
     {
       title: 'Order ID',
-      dataIndex: 'orderId',
-      key: 'orderId',
+      dataIndex: 'id',
+      key: 'id',
     },
     {
       title: 'Payment Method',
@@ -20,27 +20,32 @@ const RecentOrdersTable = ({ data }) => {
       dataIndex: 'orderDate',
       key: 'orderDate',
     },
+  
     {
       title: 'Status',
       dataIndex: 'status',
-      key: 'status',
+      render: (text, record) => (
+        record?.status===0?<h3 style={{color:'blue'}}>Pending</h3>:
+        record?.status==1?<h3 style={{color:'green'}}>Processing</h3>:<h3 style={{color:'red'}}>Cancel</h3>
+      ),
     },
     {
       title: 'Total Amount',
-      dataIndex: 'totalAmount',
-      key: 'totalAmount',
+      dataIndex: 'amount',
+      key: 'ammount',
     },
+    
     {
       title: 'Action',
       key: 'action',
       render: (text, record) => (
         <span>
           <Button type="primary" icon={<i className="far fa-eye"></i>}>
-           <Link href='/admin/action/view'> View</Link>
+           <Link href={`/admin/action/single-order/${record.id}`} > View</Link>
           </Button>
-          <Button type="default" icon={<i className="far fa-edit"></i>}>
+          {/* <Button type="default" icon={<i className="far fa-edit"></i>}>
             Edit
-          </Button>
+          </Button> */}
         </span>
       ),
     },

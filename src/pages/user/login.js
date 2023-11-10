@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Image, Input } from "antd";
+import { Button, Card, Checkbox, Form, Image, Input } from "antd";
 import Link from "next/link";
 import RootLayout from "@/Component/Layout/RootLayout";
 import { Col, Row } from "antd";
@@ -34,25 +34,14 @@ const Login = () => {
           <img width='100%' height='auto' src="/image/login.png" alt="" />
         </Col>
         <Col sm={20} md={10} lg={10}>
-        <div className="login-card">
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "15px",
-            paddingTop: "15px",
-          }}
-        >
-          Login Form
-        </h2>
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-        >
-          <Form.Item
+        
+      <Card title="Login Form" style={{ width: 300 }}>
+      <Form
+        name="registration"
+        onFinish={onFinish}
+        initialValues={{ gender: 'male' }}
+      >
+         <Form.Item
             name="email"
             rules={[
               {
@@ -66,6 +55,7 @@ const Login = () => {
               placeholder="Emali or Phone"
             />
           </Form.Item>
+          
           <Form.Item
             name="password"
             rules={[
@@ -75,7 +65,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input
+            <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
@@ -107,8 +97,25 @@ const Login = () => {
             <br />
             Or <Link href="/user/register">register now!</Link>
           </Form.Item>
-        </Form>
-      </div>
+        
+
+
+      </Form>
+       </Card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </Col>
       </Row>
       <NotificationContainer />

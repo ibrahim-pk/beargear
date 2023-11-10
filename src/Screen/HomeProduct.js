@@ -53,6 +53,11 @@ const HomeProduct = () => {
       {
         loader&&<Spinner />
       }
+      <div>
+      <img style={{
+          width:'100%'
+        }} src="/image/banner2.png" alt="" />
+      </div>
       <h2 style={{ padding: "20px 0 0 20px" }}>Featured Products</h2>
 
       <div className="productCardHome">

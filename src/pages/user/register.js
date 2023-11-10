@@ -26,7 +26,9 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div style={{
+      marginBottom:'20px'
+    }}>
       <Row justify='center' align='middle'>
          <Col sm={20} md={10} lg={10}>
          <img width='100%' height='auto' src="/image/register.png" alt="" />
@@ -89,7 +91,7 @@ const Register = () => {
           </Button>
         </Form.Item>
       </Form>
-    </Card>
+       </Card>
          </Col>
       </Row>
       <NotificationContainer />

@@ -34,6 +34,9 @@ const items = [
      getItem('All Order', '9'),
      getItem('Review', '10')
   ]),
+  getItem('Popup', 'sub4', <AppstoreOutlined />, [
+    getItem(<Link href='/admin/popup/addPopup'>Add</Link>, '11')
+  ]),
 ];
 const AdminLayout = ({children}) => {
   const handleLogout=()=>{

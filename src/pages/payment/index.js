@@ -51,7 +51,12 @@ const PaymentPage = () => {
    console.log(data);
    setLoader(false)
    if(data.error){
-     NotificationManager.error('Error message', data.error, 4000);
+     NotificationManager.error('Error message', data.error+'Login first', 4000);
+    //  setTimeout(()=>{
+    //   window.location.href='/user/login'
+    //   localStorage.removeItem('jwtToken')
+    //  },4000)
+
    }else{
     localStorage.removeItem('Cart')
     window.location.href="/payment/order-msg"

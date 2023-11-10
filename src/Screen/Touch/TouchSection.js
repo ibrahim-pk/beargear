@@ -14,10 +14,17 @@ const TouchSection = () => {
     <div
       
     >
-      <h2 style={{
+      {/* <h2 style={{
         textAlign:'center',
         marginTop:'20px'
       }}>Get Touch With Us</h2>
+       */}
+       <div>
+        <img style={{
+          width:'100%'
+        }} src='/image/contactUsBanner.png' alt='' />
+       </div>
+      
       <div style={{
         display: 'flex',
         justifyContent: 'center',
