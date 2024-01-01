@@ -3,14 +3,14 @@ import { Card, Form, Input, Button, Radio,Row,Col } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-
+import Link from "next/link";
 const Register = () => {
   const [loader,setLoader]=useState(false)
 
   const onFinish = async(values) => {
     // Handle form submission here
     setLoader(true)
-    const {data}=await axios.post('http://localhost:5000/api/v1/user/register',values)
+    const {data}=await axios.post('https://server.beargear.com.bd/api/v1/user/register',values)
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
@@ -86,9 +86,13 @@ const Register = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button style={{
+            marginBottom:'10px'
+          }} type="primary" htmlType="submit">
             Register
           </Button>
+          <br />
+          Or <Link href="/user/login">Login now!</Link>
         </Form.Item>
       </Form>
        </Card>

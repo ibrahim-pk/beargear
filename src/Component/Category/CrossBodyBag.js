@@ -15,7 +15,7 @@ const CrossbodyBags=()=> {
   useEffect(()=>{
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`http://localhost:5000/api/v1/product/home/top-rated`)
+    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/home/top-rated`)
     console.log(data);
     setLoader(false)
     if(data.error){
@@ -29,15 +29,10 @@ const CrossbodyBags=()=> {
 
   },[])
   return (
-    <div>
+    <div className="homeProduct">
       {
         loader&&<Spinner />
       }
-      <div>
-        <img style={{
-          width:'100%'
-        }} src="/image/banner3.png" alt="" />
-      </div>
       <h2 style={{ padding: "20px 0 0 20px" }}>Cross Body Bag</h2>
       <div className="top-rated-carousel-item">
       <BestSellerCarousel bestSellers={topProduct} />

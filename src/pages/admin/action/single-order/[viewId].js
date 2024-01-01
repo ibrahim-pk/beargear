@@ -52,7 +52,7 @@ const View=({order})=> {
   };
 
   const handleConfirm=async(id)=>{
-    const {data}=await axios.put(`http://localhost:5000/api/v1/orders/confirm/${id}`)
+    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/confirm/${id}`)
     console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
@@ -63,7 +63,7 @@ const View=({order})=> {
   }
 
   const handleCancel=async(id)=>{
-    const {data}=await axios.put(`http://localhost:5000/api/v1/orders/cancel/${id}`)
+    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/cancel/${id}`)
     console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
@@ -125,7 +125,7 @@ View.getLayout = function getLayout(page) {
 
 
 export const getServerSideProps = async ({params}) => {
-  const res = await fetch(`http://localhost:5000/api/v1/orders/get/${params.viewId}`);
+  const res = await fetch(`https://server.beargear.com.bd/api/v1/orders/get/${params.viewId}`);
   const data = await res.json();
 
   return {

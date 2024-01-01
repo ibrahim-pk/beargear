@@ -3,14 +3,16 @@ import Link from "next/link";
 const { Search } = Input;
 import {UserOutlined} from "@ant-design/icons";
 const { SubMenu } = Menu;
-
+import { useRouter } from 'next/router';
 const Subnav = () => {
-
+  const router = useRouter();
   const onSearch = (value) =>{
     if(value.key==="Enter"){
-       console.log(value.target.value);
+       //console.log(value.target.value);
+       router.push(`/product/search/${encodeURIComponent(value?.target?.value)}`);
     }else{
-      console.log(value);
+     // console.log(value);
+      router.push(`/product/search/${encodeURIComponent(value)}`);
     }
   }
 
@@ -36,10 +38,10 @@ const Subnav = () => {
          <Menu >
          <SubMenu mode="horizontal" theme="dark" key="profile" title={<UserOutlined />}>
             <Menu.Item  key="account">
-                  <Link href="/category/inbox/sender">Account</Link>
+                  <Link href="/profile/order/OrderData">Account</Link>
                 </Menu.Item>
                 <Menu.Item key="logout">
-                  <Link href="/category/inbox/receiver">Logout</Link>
+                  <div onClick={()=>localStorage.removeItem('User')}>Logout</div>
                 </Menu.Item>
               
             </SubMenu>

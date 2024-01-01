@@ -34,7 +34,7 @@ const TopNavbar = () => {
           <p style={{ borderLeft: "1px solid red" }}></p>
         </div>
         <div className="s2">
-          <h5><Link href='/user/login' style={{color:'white'}}>Register</Link></h5>
+          <h5><Link href='/user/register' style={{color:'white'}}>Register</Link></h5>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Layout, theme,Pagination } from 'antd';
+import { Button } from 'antd';
+import Link from 'next/link';
 import HomeProduct from '../HomeProduct';
 const {Content, Footer } = Layout;
 const ProductList = () => {
@@ -33,7 +35,11 @@ const ProductList = () => {
         }}
       >
        <div style={{ textAlign: "end", marginRight: "20px" }}>
-          <Pagination simple responsive={true} total={50} />
+          <Link href="/product">
+          <Button type="primary">
+          More
+        </Button>
+        </Link>
         </div>
       </Footer>
     </Layout>

@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { Pagination } from 'antd';
 import axios from "axios";
 import Spinner from "@/Component/Loader/Loader";
-
+import { useRouter } from 'next/router';
 const ProductPage = () => {
   //console.log(allProduct);
   const [allProduct, setAllProduct] = useState([]);
@@ -25,13 +25,21 @@ const ProductPage = () => {
   const [loader, setLoader] = useState(false);
   const [reLoader, setReLoader] = useState(false);
   const [selectedPriceValue, setSelectedPriceValue] = useState(null); 
+
   const [selectedColorValue, setSelectedColorValue] = useState('');
   const [minPrice, setMinPrice] = useState(300);
   const [maxPrice, setMaxPrice] = useState(2000);
+
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
+
   
-
-
-
+  const handlePriceRangeChange = (value) => {
+    setPriceRange(value);
+    setMinPrice(value[0]);
+    setMaxPrice(value[1]);
+  };
  
   const onPageChange = (page) => {
     console.log(page);
@@ -41,23 +49,23 @@ const ProductPage = () => {
 
 
   useEffect(()=>{
-  
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/getProducts?color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
+    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/category/getProducts?cateId=${id}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
     setLoader(false)
     if(data.error){
       setAllProduct([])
+      setLoader(false)
     }else{
       setAllProduct(data)
+      setLoader(false)
     }
    }
 
    fetchData()
 
   },[selectedColorValue,
-    selectedPriceValue,currentPage,minPrice,maxPrice])
-
+    selectedPriceValue,currentPage,minPrice,maxPrice,id])
 
 
   const colorOptions = [
@@ -77,7 +85,7 @@ const ProductPage = () => {
         loader&&<Spinner />
       }
       <Row justify="space-evenly" gutter={[16, 16]}>
-        <Col
+      <Col
         style={{
           marginTop:'20px'
         }}
@@ -135,7 +143,23 @@ const ProductPage = () => {
           md={4}
           lg={4}
         >
-          
+          <div
+            style={{
+              margin: "10px 0",
+            }}
+          >
+            <h2>Price Range</h2>
+            <Slider
+              style={{
+                width: "80%",
+              }}
+              range
+              min={650}
+              max={2000}
+              value={priceRange}
+              onChange={handlePriceRangeChange}
+            />
+          </div>
           <div
             style={{
               margin: "10px 0",
@@ -147,6 +171,7 @@ const ProductPage = () => {
               <Radio value="1">High Price</Radio>
             </Radio.Group>
           </div>
+         
           <div
             style={{
               margin: "10px 0",
@@ -279,14 +304,14 @@ ProductPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-// export const getServerSideProps = async () => {
-//   const res = await fetch(");
+// export const getServerSideProps = async ({params}) => {
+//   console.log(params);
+//   const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProducts?cateId=${params.id}`);
 //   const data = await res.json();
-//   console.log(data);
 
 //   return {
 //     props: {
-//       allProduct: data,
+//       singleProduct: data,
 //     },
 //   };
 // };

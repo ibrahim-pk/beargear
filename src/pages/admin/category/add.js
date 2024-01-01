@@ -10,7 +10,7 @@ const Categories = () => {
 
   const onFinish = async(values) => {
     setLoader(true)
-    const {data}=await axios.post('http://localhost:5000/api/v1/category/add',values)
+    const {data}=await axios.post('https://server.beargear.com.bd/api/v1/category/add',values)
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);

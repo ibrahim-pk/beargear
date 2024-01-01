@@ -15,7 +15,7 @@ const HomeProduct = () => {
     //console.log(selectedBrandValue,selectedColorValue,selectedPriceValue)
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`http://localhost:5000/api/v1/product/home/product`)
+    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/home/product`)
     //console.log(data);
     setLoader(false)
     if(data.error){
@@ -53,11 +53,6 @@ const HomeProduct = () => {
       {
         loader&&<Spinner />
       }
-      <div>
-      <img style={{
-          width:'100%'
-        }} src="/image/banner2.png" alt="" />
-      </div>
       <h2 style={{ padding: "20px 0 0 20px" }}>Featured Products</h2>
 
       <div className="productCardHome">
@@ -73,7 +68,7 @@ const HomeProduct = () => {
                       <div
                         style={{
                           position: "absolute",
-                          top: "10px",
+                          top: "0px",
                           left: "0px",
                           background: "#FE5102",
                           color: "white",
@@ -83,18 +78,22 @@ const HomeProduct = () => {
                           fontSize: "14px",
                         }}
                       >
-                        10% off
+                        <small>
+                              {(
+                                (Math.abs(item.oldPrice - item.newPrice) /
+                                  item.oldPrice) *
+                                100
+                              ).toFixed(1) + " "}
+                              %OFF
+                            </small>
                       </div>
                       <img
+                       className="homeproductImage"
                         src={`https://drive.google.com/uc?id=${
                           item?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
                         }`}
                         alt="product"
-                        style={{
-                          width:'100%',
-                          height:'200px',
-                          padding:'10px 10px 1px 10px'
-                        }}
+                       
                       />
                     </div>
                   }

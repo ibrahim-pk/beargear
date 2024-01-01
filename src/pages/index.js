@@ -5,7 +5,7 @@ import Spinner from "@/Component/Loader/Loader";
 import SocialIconsContainer from "@/Component/SocialIcon/IconContainer";
 
 import SupportUs from "@/Component/Support/SupportUs";
-import ClientReview from "@/Screen/ClieentReview/ClientReview";
+import WholeSaleBanner from "@/Component/WholeSale/banner";
 import DiscountPopup from "@/Screen/DiscountPopUp/DiscountPopUp";
 import TouchSection from "@/Screen/Touch/TouchSection";
 import BestProductList from "@/Screen/product/BestProduct/BestProductList";
@@ -26,10 +26,11 @@ const HomeScreen = () => {
       <div className="HomeContainer">
       <BestProductList />
       <ProductList />
-      <CrossbodyBags />
-      <ClientReview />
+      {/* <CrossbodyBags /> */}
       <TouchSection />
+      <WholeSaleBanner />
       <DynamicSpinner />
+     
       </div>
       <DiscountPopup />
     </div>

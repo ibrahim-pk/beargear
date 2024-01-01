@@ -23,7 +23,7 @@ const ReviewForm = ({id}) => {
   const onFinish = async(values) => {
      console.log('Review submitted:', values);
      setLoader(true)
-    const{data}=await axios.post(`http://localhost:5000/api/v1/product/add/review/${id}`,
+    const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/product/add/review/${id}`,
     
        {values,jwtToken},{headers}
    )

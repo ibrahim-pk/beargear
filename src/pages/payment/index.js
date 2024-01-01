@@ -44,7 +44,7 @@ const PaymentPage = () => {
     // Handle the form submission here (e.g., send data to the server)
     console.log(formData,total,cart);
     setLoader(false)
-   const{data}=await axios.post(`http://localhost:5000/api/v1/orders/add`,
+   const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/orders/add`,
    
       {formData,total,cart},{headers}
   )

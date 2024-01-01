@@ -13,9 +13,12 @@ import {
 import DashboardCard from '@/Component/Admin/Dashboard';
 import AdminLayout from '@/Component/Layout/AdminLayout';
 import RecentOrdersPage from '@/Component/Admin/Order/OrderData';
+import AdminRouter from '@/Component/PrivateRouter/AdminRouter';
+
 
 const AdminPage = () => {
   return (
+    <AdminRouter>
     <div style={{ padding: '24px' }}>
         
       <Row gutter={[10,10]}>
@@ -72,6 +75,7 @@ const AdminPage = () => {
         <RecentOrdersPage />
       </div>
     </div>
+    </AdminRouter>
   );
 };
 

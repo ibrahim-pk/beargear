@@ -101,7 +101,7 @@ ProductDetails.getLayout = function getLayout(page) {
 
 export const getServerSideProps = async ({params}) => {
   console.log(params);
-  const res = await fetch(`http://localhost:5000/api/v1/product/getProduct/${params.productId}`);
+  const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProduct/${params.productId}`);
   const data = await res.json();
 
   return {

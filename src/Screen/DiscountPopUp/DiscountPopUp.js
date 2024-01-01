@@ -15,7 +15,7 @@ const DiscountPopup = () => {
     
     const fetchData=async()=>{
       setLoader(true)
-      const {data}=await axios.get('http://localhost:5000/api/v1/popup/get')
+      const {data}=await axios.get('https://server.beargear.com.bd/api/v1/popup/get')
       setLoader(false)
       setPopData(data)
       console.log(data);

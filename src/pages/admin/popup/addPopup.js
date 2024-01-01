@@ -12,7 +12,7 @@ const AddPopup = () => {
     //console.log('Form values:', values);
     // Add your logic to handle the form submission here
     setLoader(true)
-    const {data}=await axios.put('http://localhost:5000/api/v1/popup/1',values)
+    const {data}=await axios.put('https://server.beargear.com.bd/api/v1/popup/1',values)
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);

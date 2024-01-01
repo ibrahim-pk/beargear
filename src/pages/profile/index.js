@@ -1,9 +1,5 @@
 // pages/UserProfile.js
-
 import UserProfileLayout from "@/Component/Layout/UserProfileLayout";
-
-
-
 const UserProfile = () => {
   return (
     <h1>User Profile</h1>

@@ -37,6 +37,20 @@ const items = [
   getItem('Popup', 'sub4', <AppstoreOutlined />, [
     getItem(<Link href='/admin/popup/addPopup'>Add</Link>, '11')
   ]),
+  getItem('Banner', 'banner', <AppstoreOutlined />, [
+    getItem(<Link href='/admin/banner/add'>Add</Link>, '12'),
+    getItem(<Link href='/admin/banner/delete'>Delete</Link>, '13'),
+  ]),
+
+  getItem('SupportUS', 'SupportUS', <AppstoreOutlined />, [
+    getItem(<Link href='/admin/support/add'>Add</Link>, '14'),
+    getItem(<Link href='/admin/support/delete'>Delete</Link>, '15'),
+  ]),
+
+  getItem('Gallary', 'gallary', <AppstoreOutlined />, [
+    getItem(<Link href='/admin/gallary/add'>Add</Link>, '16'),
+    getItem(<Link href='/admin/gallary/delete'>Delete</Link>, '17'),
+  ]),
 ];
 const AdminLayout = ({children}) => {
   const handleLogout=()=>{

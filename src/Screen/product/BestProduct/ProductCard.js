@@ -27,16 +27,13 @@ const ProductCard = ({ product }) => {
       <Link href="/single-product/1">
         <Card hoverable title={product.title}>
            <div>
-           <img
+           <img 
+            className="topProductImg"
               src={`https://drive.google.com/uc?id=${
                 product?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
               }`}
               alt="product"
-              style={{
-                width: "100%",
-                height: "200px",
-                padding: "10px 10px 1px 10px",
-              }}
+  
             />
            </div>
           <h3>
