@@ -12,8 +12,9 @@
   "dependencies": {
     "antd": "^5.8.5",
     "axios": "^1.5.1",
+    "babel-eslint": "^10.1.0",
     "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
+    "eslint-config-next": "^13.4.19",
     "jspdf": "^2.5.1",
     "next": "13.4.19",
     "react": "18.2.0",
