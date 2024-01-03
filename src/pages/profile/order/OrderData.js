@@ -26,7 +26,7 @@ const RecentOrdersPage = () => {
       const {data}=await axios.get('https://server.beargear.com.bd/api/v1/orders/get/id',{headers})
       setLoader(false)
       setOrder(data?.orders)
-      console.log(data);
+      //console.log(data);
     }
     fetchData()
 

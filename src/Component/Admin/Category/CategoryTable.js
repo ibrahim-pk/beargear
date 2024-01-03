@@ -4,7 +4,7 @@ import { Table, Button, Card } from 'antd';
 
 
 const CategoryTable = ({ category, handleDelete }) => {
-  console.log(category);
+ // console.log(category);
   const columns = [
     {
       title: 'ID',

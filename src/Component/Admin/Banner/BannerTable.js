@@ -4,7 +4,7 @@ import { Table, Button, Card } from 'antd';
 
 
 const BannerTable = ({ banner, handleDelete }) => {
-  console.log(banner);
+  //console.log(banner);
   const columns = [
     {
       title: 'ID',

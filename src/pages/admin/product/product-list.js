@@ -82,7 +82,7 @@ ProductList.getLayout = function getLayout(page) {
 export const getServerSideProps = async () => {
   const res = await fetch("https://server.beargear.com.bd/api/v1/product/getProducts");
   const data = await res.json();
-  console.log(data);
+  //console.log(data);
 
   return {
     props: {

@@ -54,7 +54,7 @@ const items = [
 ];
 const AdminLayout = ({children}) => {
   const handleLogout=()=>{
-    console.log('logout')
+    //console.log('logout')
   }
   const [collapsed, setCollapsed] = useState(false);
   const {

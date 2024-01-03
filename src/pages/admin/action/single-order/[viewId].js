@@ -53,7 +53,7 @@ const View=({order})=> {
 
   const handleConfirm=async(id)=>{
     const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/confirm/${id}`)
-    console.log(data);
+    //console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
     }else{
@@ -64,7 +64,7 @@ const View=({order})=> {
 
   const handleCancel=async(id)=>{
     const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/cancel/${id}`)
-    console.log(data);
+   // console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
     }else{

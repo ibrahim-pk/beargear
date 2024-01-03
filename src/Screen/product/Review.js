@@ -21,13 +21,13 @@ const ReviewForm = ({id}) => {
 
 
   const onFinish = async(values) => {
-     console.log('Review submitted:', values);
+    // console.log('Review submitted:', values);
      setLoader(true)
     const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/product/add/review/${id}`,
     
        {values,jwtToken},{headers}
    )
-    console.log(data);
+    //console.log(data);
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);

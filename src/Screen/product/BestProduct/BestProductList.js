@@ -7,7 +7,7 @@ const BestProductList = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const handleFeture=(data)=>{
-     console.log(data)
+     //console.log(data)
   }
   return (
     <Layout className="layout">

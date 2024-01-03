@@ -26,7 +26,7 @@ const AddProduct = () => {
 
   const onFinish = async (values) => {
 
-    console.log('Received values:', values);
+    //console.log('Received values:', values);
     setLoader(true);
     const { data } = await axios.post(
       "https://server.beargear.com.bd/api/v1/banner/add",

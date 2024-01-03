@@ -26,7 +26,7 @@ const Header = () => {
              {
                banner.length>0&&
                banner.map((item,idx)=>(
-                <div>
+                <div key={idx}>
                 <img
                  
                  src={`https://drive.google.com/uc?id=${item?.imageLink?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]}`}

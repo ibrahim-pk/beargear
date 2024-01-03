@@ -79,7 +79,7 @@ const BestProduct=()=> {
    const fetchData=async()=>{
     setLoader(true)
     const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/home/top-rated`)
-    console.log(data);
+    //console.log(data);
     setLoader(false)
     if(data.error){
       setTopProduct([])

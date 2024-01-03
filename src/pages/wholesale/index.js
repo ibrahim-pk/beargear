@@ -9,7 +9,7 @@ const WholesalePage = () => {
   const [file, setFile] = useState(null);
 
   const onSubmit = (data) => {
-    console.log(data);
+    //console.log(data);
   };
 
   const handleUpload = async (info) => {
@@ -51,7 +51,7 @@ const WholesalePage = () => {
 
                   if (response.ok) {
                     const data = await response.json();
-                    console.log('File uploaded:', data.url);
+                    //console.log('File uploaded:', data.url);
                     onSuccess();
                   } else {
                     console.error('File upload failed:', response.statusText);

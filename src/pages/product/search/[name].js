@@ -32,7 +32,7 @@ const ProductPage = () => {
 
   const router = useRouter();
   const { name } = router.query;
-  console.log(name);
+  //console.log(name);
 
   
   const handlePriceRangeChange = (value) => {
@@ -42,7 +42,7 @@ const ProductPage = () => {
   };
  
   const onPageChange = (page) => {
-    console.log(page);
+    //console.log(page);
     setCurrentPage(page);
   };
 
@@ -53,7 +53,7 @@ const ProductPage = () => {
     setLoader(true)
     const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/search/getProducts?name=${name}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
     setLoader(false)
-    console.log(data);
+    //console.log(data);
     if(data.error){
       setAllProduct([])
       setLoader(false)
@@ -203,9 +203,9 @@ const ProductPage = () => {
           <h2 style={{ margin: "20px 0px",textAlign:'center' }}>Featured Products</h2>
           <Row justify='center'   gutter={[16, 16]}>
             {allProduct?.length > 0 ? (
-              allProduct.map((item) => (
+              allProduct.map((item,idx) => (
                 <Col 
-                
+                key={idx}
                 xs={11}
                 sm={11}
                 md={7}

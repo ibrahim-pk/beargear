@@ -3,7 +3,7 @@ import { UploadOutlined } from '@ant-design/icons';
 
 const WholesaleForm = () => {
   const onFinish = (values) => {
-    console.log('Submitted values:', values);
+    //console.log('Submitted values:', values);
   };
 
   const beforeUpload = (file) => {

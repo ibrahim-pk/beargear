@@ -42,13 +42,13 @@ const PaymentPage = () => {
  
   const handleFormSubmit = async() => {
     // Handle the form submission here (e.g., send data to the server)
-    console.log(formData,total,cart);
+    //console.log(formData,total,cart);
     setLoader(false)
    const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/orders/add`,
    
       {formData,total,cart},{headers}
   )
-   console.log(data);
+   //console.log(data);
    setLoader(false)
    if(data.error){
      NotificationManager.error('Error message', data.error+'Login first', 4000);

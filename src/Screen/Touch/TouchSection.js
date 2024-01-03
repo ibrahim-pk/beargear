@@ -7,7 +7,7 @@ const TouchSection = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const onFinish = (values) => {
-    console.log('Submitted values:', values);
+    //console.log('Submitted values:', values);
   };
 
   return (

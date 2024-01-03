@@ -22,7 +22,7 @@ const Navbar = () => {
       const { data } = await axios.get(
         `https://server.beargear.com.bd/api/v1/category/get`
       );
-      console.log(data);
+     // console.log(data);
 
       if (data.error) {
         setSelectedCategory([]);
