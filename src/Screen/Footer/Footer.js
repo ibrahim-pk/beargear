@@ -12,19 +12,19 @@ const BGFooter = () => {
           <h3 style={{
             color:'#FE5102',
             marginBottom:'10px'
-          }}>About BearGear</h3>
-          <p>Your company description goes here.</p>
+          }}>BearGear</h3>
+          <p>Joar shara bazar,Ka/152 <br /> Vatara Dhaka</p>
         </Col>
         <Col xs={10} sm={10} md={5} lg={5}>
           <h3 style={{
             color:'#FE5102',
             marginBottom:'10px'
           }}>Contact Info</h3>
-          <p>Address: 123 Main St</p>
-          <p>Phone: +1 555-555-5555</p>
-          <p>Email: info@beargear.com</p>
-          <p>Trade License: XYZ12345</p>
-          <p>BIN No: 12345678</p>
+         
+          <p>Phone:+8801303609149</p>
+          <small>Email:abunaim.beargear.bd@gmail.com</small>
+          <p>Trade License:002878/2023</p>
+         
         </Col>
         <Col xs={10} sm={10} md={5} lg={5}>
           <h3 style={{
@@ -44,9 +44,11 @@ const BGFooter = () => {
             marginBottom:'10px'
           }}>My Account</h3>
           <div className='footerProfile'>
-          <p><Link>Login</Link></p>
-          <p><Link>Order History</Link></p>
-          <p><Link>My Wishlist</Link></p>
+          <p><Link href='/user/login'>Login</Link></p>
+          <p><Link href='/product'>Product</Link></p>
+          <p><Link href='/gallery'>Gallary</Link></p>
+          <p><Link href='/wholesale'>Wholesale</Link></p>
+          
           </div>
         </Col>
       </Row>

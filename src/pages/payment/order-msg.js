@@ -1,14 +1,19 @@
+import RootLayout from '@/Component/Layout/RootLayout';
 import { Button, Result } from 'antd';
 import Link from 'next/link';
+
 const OrderMsg = () => (
-  <Result
+  <RootLayout>
+       <Result
     status="success"
-    title="Successfully Purchased"
-    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+    title="Successfully"
+    subTitle="Congratulation For Purchased"
     extra={[
       <Button key="home"><Link href='/' >Home</Link></Button>,
-      <Button key="buy"><Link href='/product' >Buy Again</Link></Button>,
+      <Button key="buy"><Link href='/profile/order/OrderData' >Dashboard</Link></Button>,
     ]}
   />
+    </RootLayout>
+  
 );
 export default OrderMsg;

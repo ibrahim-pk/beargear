@@ -16,7 +16,7 @@ const HomeProduct = () => {
    const fetchData=async()=>{
     setLoader(true)
     const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/home/product`)
-    //console.log(data);
+    console.log(data);
     setLoader(false)
     if(data.error){
       setAllProduct([])
@@ -53,9 +53,10 @@ const HomeProduct = () => {
       {
         loader&&<Spinner />
       }
-      <h2 style={{ padding: "20px 0 0 20px" }}>Featured Products</h2>
+      <h2 style={{ padding: "20px 0 20px 0px",textAlign:'center' }}>Featured Products</h2>
 
       <div className="productCardHome">
+      
         <Row gutter={[16, 16]} justify="center">
           {allProduct.map((item, idx) => (
             <Col key={idx} xs={11} sm={11} md={7} lg={5} xl={5}>

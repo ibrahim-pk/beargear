@@ -21,22 +21,19 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem('Manage Account', 'sub1',<ProfileOutlined />,[
     getItem(<Link href='/profile'>My Profile</Link>, '1',),
-    getItem(<Link href='/profile-address'>Address</Link>, '2',<HeatMapOutlined />),
+    // getItem(<Link href='/profile/profile-address'>Address</Link>, '2',<HeatMapOutlined />),
   ]),
 
-  getItem(<Link href='/profile/review'>Review</Link>, '3', <CompassOutlined />),
+  // getItem(<Link href='/profile/review'>Review</Link>, '3', <CompassOutlined />),
 
   getItem('My Order', 'sub2', <InboxOutlined />, [
-    getItem(<Link href='/profile/order'>Orders</Link>, '5'),
-    getItem(<Link href='/profile/order/return'>Return</Link>, '6'),
-    getItem(<Link href='/profile/order/cancel'>Cancel</Link>, '7'),
+    getItem(<Link href='/profile/order/OrderData'>Orders</Link>, '5'),
+    // getItem(<Link href='/profile/order/return'>Return</Link>, '6'),
+    // getItem(<Link href='/profile/order/cancel'>Cancel</Link>, '7'),
     
   ])
 ];
 const UserProfileLayout = ({children}) => {
-  const handleLogout=()=>{
-    console.log('logout')
-  }
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -53,7 +50,7 @@ const UserProfileLayout = ({children}) => {
           textAlign:'center',
           color:'white',
           margin:'10px 0'
-         }}>Bg Admin</h2>
+         }}>Dashboard</h2>
          <hr style={{
           marginBottom:'10px'
          }} />
@@ -69,7 +66,7 @@ const UserProfileLayout = ({children}) => {
           <div style={{margin:'0 10px'}}>
             <h2 style={{
               cursor:'pointer'
-            }} onClick={handleLogout}>Logout <span style={{margin:'0 2px'}}><LogoutOutlined /></span></h2>
+            }}><Link href="/">Home</Link></h2>
         </div>
           </Header>
         <Content

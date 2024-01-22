@@ -1,43 +1,41 @@
+// components/PrivateRoute.js
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import Spinner from '../Loader/Loader';
 
-const AdminRouter = ({ children }) => {
+const UserRouter = ({ children }) => {
   const router = useRouter();
-  const[loader,setLoader]=useState()
+  const [loader,setLoader]=useState(false)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoader(true)
         if (typeof window !== 'undefined') {
-          setLoader(true)
           const jwtToken = JSON.parse(localStorage.getItem('User')) || {};
-          const {data}=await axios.post('https://server.beargear.com.bd/api/v1/user/verify',{
-            token:jwtToken?.token
-           })
-           setLoader(false)
-           if (!(data?.admin)) {
-            router.push('/user/login');
-          }else{
+          setLoader(false)
+          if (jwtToken?.token) {
             return <>{children}</>;
+            // User is authenticated, render the children
+            // You can also make an API call or perform additional checks here if needed
+          } else {
+            // User is not authenticated, redirect to login page
+            router.push('/user/login');
           }
-
-         
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
         // Handle error if needed
-        setLoader(false)
       }
     };
 
     fetchData();
-  }, []); 
-
+  }, []); // Run the effect only once when the component mounts
   return <>{
     loader?<Spinner />:children
   }</>;
+  
 };
 
-export default AdminRouter;
-
+export default UserRouter;

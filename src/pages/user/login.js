@@ -16,7 +16,15 @@ const Login = () => {
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data?.error, 4000);
-    }else{
+    }else if(data.admin===1){
+      localStorage.setItem('User',JSON.stringify({token:data?.token}))
+      localStorage.setItem('BgAdmin',JSON.stringify({admin:1}))
+      setInterval(()=>{
+        window.location.href='/bg/admin'
+      },1000)
+
+    }
+    else{
       NotificationManager.success('Success message', data?.msg,4000);
       //console.log(data);
       localStorage.setItem('User',JSON.stringify({token:data?.token}))

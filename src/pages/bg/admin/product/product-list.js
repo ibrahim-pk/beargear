@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Table, Input, Button, Card } from "antd";
 import AdminLayout from "@/Component/Layout/AdminLayout";
-
+import Link from 'next/link';
 const { Search } = Input;
 
-const data = [
-  { productId: 1, name: "Product A" ,title:'111',price:'1222'},
-  { productId: 2, name: "Product B" },
-  { productId: 3, name: "Product C" },
-  // Add more data as needed
-];
+
 
 const ProductList = ({allProduct}) => {
   const [filteredData, setFilteredData] = useState(allProduct);
@@ -19,8 +14,8 @@ const ProductList = ({allProduct}) => {
   // }, [data]);
 
   const handleSearch = (value) => {
-    const filtered = data.filter((item) =>
-      item.productId.toString().includes(value)
+    const filtered = allProduct.filter((item) =>
+      item.id.toString().includes(value)
     );
     setFilteredData(filtered);
   };
@@ -41,9 +36,9 @@ const ProductList = ({allProduct}) => {
       key: "actions",
       render: (_, record) => (
         <div>
-          <Button type="primary" size="small" style={{ marginRight: "8px" }}>
+          <Link href={`/bg/admin/product/${record.id}`} type="primary" size="small" style={{ marginRight: "8px" }}>
             Edit
-          </Button>
+          </Link>
           <Button type="danger" size="small" style={{ marginRight: "8px" }}>
             Delete
           </Button>

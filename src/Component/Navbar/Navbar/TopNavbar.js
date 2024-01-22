@@ -1,7 +1,14 @@
 import { DeliveredProcedureOutlined, PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const TopNavbar = () => {
+  let admin;
+
+  if (typeof window !== "undefined") {
+    admin = JSON.parse(localStorage.getItem("BgAdmin")) || [];
+  }
+
   return (
     <div
       style={{
@@ -18,7 +25,7 @@ const TopNavbar = () => {
           <h5>Customer Service</h5>
         </div>
         <div style={{ display: "flex", gap: "2px" }} className="">
-          <p></p>
+         
         </div>
         <div style={{ display: "flex", gap: "2px" }} className="">
           <DeliveredProcedureOutlined />
@@ -27,6 +34,12 @@ const TopNavbar = () => {
       </div>
 
       <div style={{ display: "flex", gap: "10px" }} className="authOption">
+      <div className="s1">
+        {
+          admin?.admin&&<h5 ><Link href='/bg/admin' style={{color:'white'}}>Admin</Link></h5>
+
+        }
+        </div>
         <div className="s1">
           <h5 ><Link href='/user/login' style={{color:'white'}}>Login</Link></h5>
         </div>

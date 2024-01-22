@@ -21,7 +21,7 @@ const ProductPage = () => {
   //console.log(allProduct);
   const [allProduct, setAllProduct] = useState([]);
   const [priceRange, setPriceRange] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const [loader, setLoader] = useState(false);
   const [reLoader, setReLoader] = useState(false);
   const [selectedPriceValue, setSelectedPriceValue] = useState(null); 
@@ -44,7 +44,7 @@ const ProductPage = () => {
   
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/getProducts?color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
+    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/getProducts?color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=8`)
     setLoader(false)
     if(data.error){
       setAllProduct([])

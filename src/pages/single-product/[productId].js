@@ -84,7 +84,7 @@ const ProductDetails = ({singleProduct}) => {
       <Row justify="space-around" gutter={[16, 16]}>
         <Col xs={20} sm={20} md={14} lg={14} xl={14}>
           <Divider />
-          <RatingsAndReviews id={singleProduct} /> 
+          <RatingsAndReviews id={singleProduct?.id} /> 
           <Divider />
           <ReviewForm  id={singleProduct?.id}/>
         </Col>

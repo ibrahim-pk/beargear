@@ -3,6 +3,7 @@ import { Form, Input, Select, Button, Card, Row, Col } from 'antd';
 import RootLayout from '@/Component/Layout/RootLayout';
 import axios from 'axios';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import UserRouter from '@/Component/PrivateRouter/UserRouter';
 
 
 const { Option } = Select;
@@ -43,7 +44,7 @@ const PaymentPage = () => {
   const handleFormSubmit = async() => {
     // Handle the form submission here (e.g., send data to the server)
     //console.log(formData,total,cart);
-    setLoader(false)
+    setLoader(true)
    const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/orders/add`,
    
       {formData,total,cart},{headers}
@@ -71,7 +72,9 @@ const PaymentPage = () => {
   };
 
   return (
-   <div style={{
+    <RootLayout>
+          <UserRouter>
+          <div style={{
     padding:'20PX',
     margin:'20px 0'
    }}>
@@ -152,10 +155,15 @@ const PaymentPage = () => {
     </Row>
     <NotificationContainer />
    </div>
+          </UserRouter>
+        </RootLayout>
+    
+  
   );
 };
 
 export default PaymentPage;
-PaymentPage.getLayout = function getLayout(page) {
-  return <RootLayout>{page}</RootLayout>;
-};
+
+// PaymentPage.getLayout = function getLayout(page) {
+//   return <RootLayout>{page}</RootLayout>;
+// };

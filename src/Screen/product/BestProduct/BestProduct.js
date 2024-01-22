@@ -98,7 +98,7 @@ const BestProduct=()=> {
       }
       <div>
       </div>
-      <h2 style={{ padding: "20px 0 0 20px" }}>Top Rated Product</h2>
+      <h2 style={{ padding: "20px 0 20px 0px",textAlign:'center' }}>Top Rated Product</h2>
       <div className="top-rated-carousel-item">
       <BestSellerCarousel bestSellers={topProduct} />
       </div>

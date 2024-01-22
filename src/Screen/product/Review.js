@@ -4,7 +4,7 @@ import { Form, Input, Button } from 'antd';
 import axios from 'axios';
 import { useState } from 'react';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-
+import Link from 'next/link';
 const ReviewForm = ({id}) => {
   //console.log(id);
   const [loader, setLoader] = useState(false);
@@ -21,7 +21,7 @@ const ReviewForm = ({id}) => {
 
 
   const onFinish = async(values) => {
-    // console.log('Review submitted:', values);
+     //console.log('Review submitted:', values);
      setLoader(true)
     const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/product/add/review/${id}`,
     
@@ -56,9 +56,14 @@ const ReviewForm = ({id}) => {
     <Input.TextArea rows={4} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        {
+          jwtToken?.token?<Button type="primary" htmlType="submit">
           Submit Review
-        </Button>
+        </Button>:<Link style={{
+          color:'red'
+        }} href="/user/login" ><h3>Login First</h3></Link>
+        }
+        
       </Form.Item>
     </Form>
     <NotificationContainer />

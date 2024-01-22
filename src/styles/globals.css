@@ -257,14 +257,14 @@ body{
 }
 
 /* product card */
-.productCard{
+/* .productCard{
   width: 210px;
 }
 .productCard img{
   height: 200px;
   width: auto;
   padding: 15px 10px 1px 10px
-}
+} */
 .productCard .productTitle{
   display: -webkit-box;
   max-width: 100%;
@@ -375,7 +375,7 @@ body{
     padding:5px;
  }
 .productCardHome .productCard{
-  width: 150px;
+  width: 160px;
 }
 .productCardHome .productCard img{
   max-height: 180px;
@@ -385,7 +385,7 @@ body{
 }
   /* product card */
 .filterProduct .productCard{
-  width: 180px;
+  width: 160px;
 }
 
 .filterProduct .productCard img{

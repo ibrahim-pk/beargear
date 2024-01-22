@@ -10,7 +10,7 @@ import {
   NotificationManager,
 } from "react-notifications";
 
-const ProfileComponent = () => {
+const profileAddress = () => {
   const [loader, setLoader] = useState(false);
   const [form] = Form.useForm(); // Use Form instance for better control
 
@@ -90,7 +90,7 @@ const ProfileComponent = () => {
         </Col>
 
         {/* Second Column - Form */}
-        <Col xs={24} sm={12} md={12} lg={12}>
+        <Col xs={24} sm={12} md={16} lg={18}>
           <Form
             form={form}
             layout="vertical"
@@ -126,8 +126,8 @@ const ProfileComponent = () => {
   );
 };
 
-export default ProfileComponent;
+export default profileAddress;
 
-ProfileComponent.getLayout = function getLayout(page) {
+profileAddress.getLayout = function getLayout(page) {
   return <UserProfileLayout>{page}</UserProfileLayout>;
 };

@@ -17,8 +17,10 @@ import AdminRouter from '@/Component/PrivateRouter/AdminRouter';
 
 
 const AdminPage = () => {
+  //console.log("admin dashboard is calling");
   return (
-    <AdminRouter>
+    <AdminLayout>
+      <AdminRouter>
     <div style={{ padding: '24px' }}>
         
       <Row gutter={[10,10]}>
@@ -76,11 +78,12 @@ const AdminPage = () => {
       </div>
     </div>
     </AdminRouter>
+    </AdminLayout>
   );
 };
 
 export default AdminPage;
 
-AdminPage.getLayout = function getLayout(page) {
-    return <AdminLayout>{page}</AdminLayout>;
-  };
+// AdminPage.getLayout = function getLayout(page) {
+//     return <AdminLayout>{page}</AdminLayout>;
+// };

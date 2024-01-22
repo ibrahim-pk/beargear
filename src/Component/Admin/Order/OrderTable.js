@@ -41,7 +41,7 @@ const RecentOrdersTable = ({ data }) => {
       render: (text, record) => (
         <span>
           <Button type="primary" icon={<i className="far fa-eye"></i>}>
-           <Link href={`/admin/action/single-order/${record.id}`} > View</Link>
+           <Link href={`/bg/admin/action/single-order/${record.id}`} > View</Link>
           </Button>
           {/* <Button type="default" icon={<i className="far fa-edit"></i>}>
             Edit

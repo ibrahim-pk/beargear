@@ -23,9 +23,12 @@ const ProductCard = ({ product }) => {
     alert("Product added to cart!");
   };
   return (
-    <div>
+    <div className="productCardHome">
       <Link href="/single-product/1">
-        <Card hoverable title={product.title}>
+        <Card 
+        className="productCard"
+        hoverable title={product.title}>
+          
            <div>
            <img 
             className="topProductImg"

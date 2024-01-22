@@ -14,17 +14,17 @@ const ProductList = () => {
   return (
     <Layout className="layout">
       <Content
-        style={{
-          padding: '0 20px',
-          margin:'40px 0 0 0'
-        }}
+        // style={{
+        //   padding: '0 20px',
+        //   margin:'40px 0 0 0'
+        // }}
       >
        
         <div
           className="site-layout-content"
-          style={{
-            background: colorBgContainer,
-          }}
+          // style={{
+          //   background: colorBgContainer,
+          // }}
         >
          <HomeProduct></HomeProduct>
         </div>
@@ -34,7 +34,7 @@ const ProductList = () => {
           textAlign: 'center',
         }}
       >
-       <div style={{ textAlign: "end", marginRight: "20px" }}>
+       <div style={{ textAlign: "center", marginRight: "20px" }}>
           <Link href="/product">
           <Button type="primary">
           More

@@ -6,15 +6,15 @@ const ReviewItem = ({ review }) => {
   return (
     <div className="review-item">
       <div className="review-header">
-        <Avatar src={review.avatarUrl} alt={review.username} />
-        <span className="review-author">{review.username}</span>
-        <Tooltip title={review.createdAt}>
+        <Avatar src={review?.avatarUrl} alt={review?.userName} />
+        <span className="review-author">{review?.userName}</span>
+        {/* <Tooltip title={review.createdAt}>
           <span className="review-datetime">{review.createdAt}</span>
-        </Tooltip>
+        </Tooltip> */}
       </div>
-      <p className="review-content">{review.comment}</p>
+      <p className="review-content">{review?.review}</p>
       <div className="review-actions">
-        <Rate disabled defaultValue={review.rating} />
+        <Rate disabled defaultValue={4} />
       </div>
     </div>
   );
