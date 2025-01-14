@@ -19,7 +19,7 @@ const PaymentPage = () => {
     zila: '',
     thana: '',
     productReceiveLocation: '',
-    paymentMethod: ''
+    paymentMethod: 'bkash'
   });
 
   let jwtToken;
@@ -45,11 +45,11 @@ const PaymentPage = () => {
     // Handle the form submission here (e.g., send data to the server)
     //console.log(formData,total,cart);
     setLoader(true)
-   const{data}=await axios.post(`https://server.beargear.com.bd/api/v1/orders/add`,
+   const{data}=await axios.post(`http://localhost:5000/api/v1/orders/add`,
    
       {formData,total,cart},{headers}
   )
-   //console.log(data);
+   console.log(data);
    setLoader(false)
    if(data.error){
      NotificationManager.error('Error message', data.error+'Login first', 4000);
@@ -60,7 +60,8 @@ const PaymentPage = () => {
 
    }else{
     localStorage.removeItem('Cart')
-    window.location.href="/payment/order-msg"
+    window.location.replace(data?.paymentUrl);
+    // window.location.href="/payment/order-msg"
    }
   };
 
@@ -133,17 +134,6 @@ const PaymentPage = () => {
             marginBottom:'10px'
           }}>Total Fee:{total}Tk</h3>
           <Form onFinish={handleFormSubmit}>
-            <Form.Item  name="paymentMethod">
-              <Select
-                placeholder="Select Payment Method"
-                onChange={(value) => handleChange('paymentMethod', value)}
-              >
-                <Option value="cashOnDelivery">Cash on Delivery</Option>
-                <Option value="bkash">bKash</Option>
-                <Option value="nogod">Nogod</Option>
-                <Option value="card">Card</Option>
-              </Select>
-            </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Make Payment

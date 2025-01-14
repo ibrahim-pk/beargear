@@ -23,7 +23,7 @@ const RecentOrdersPage = () => {
   useEffect(()=>{
     const fetchData=async()=>{
       setLoader(true)
-      const {data}=await axios.get('https://server.beargear.com.bd/api/v1/orders/get/id',{headers})
+      const {data}=await axios.get('http://localhost:5000/api/v1/orders/get/id',{headers})
       setLoader(false)
       setOrder(data?.orders)
       //console.log(data);

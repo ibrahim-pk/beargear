@@ -11,7 +11,7 @@ const SupportUs = () => {
     const fetchData = async () => {
       setLoader(true);
       const { data } = await axios.get(
-        "https://server.beargear.com.bd/api/v1/support/get"
+        "http://localhost:5000/api/v1/support/get"
       );
       setLoader(false);
       setBanner(data);
@@ -29,8 +29,7 @@ const SupportUs = () => {
             banner.map((item, idx) =>(
               <Col key={idx} sm={4} md={5} lg={5}>
               <Image
-                src={`https://drive.google.com/uc?id=${item?.imageLink.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-                }`}
+                src={item?.imageLink}
                 alt={item?.title}
                 height="50px"
                 width="auto"

@@ -37,7 +37,7 @@ const RatingsAndReviews = ({id}) => {
  useEffect(()=>{
   const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/get/review/${id}`)
+    const{data}=await axios.get(`http://localhost:5000/api/v1/product/get/review/${id}`)
     console.log(data);
     setLoader(false)
     if(data.error){

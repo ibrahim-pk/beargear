@@ -12,7 +12,7 @@ const Login = () => {
   const onFinish = async(values) => {
        // Handle form submission here
     setLoader(true)
-    const {data}=await axios.post('https://server.beargear.com.bd/api/v1/user/login',values)
+    const {data}=await axios.post('http://localhost:5000/api/v1/user/login',values)
     setLoader(false)
     if(data.error){
       NotificationManager.error('Error message', data?.error, 4000);

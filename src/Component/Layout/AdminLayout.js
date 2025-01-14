@@ -30,8 +30,8 @@ const items = [
     getItem(<Link href='/bg/admin/category/delete'>Delete</Link>, '8'),
   ]),
   getItem('Order', 'sub3', <ShoppingCartOutlined />, [
-     getItem('All Order', '9'),
-     getItem('Review', '10')
+     getItem(<Link href='/bg/admin/order/allOrder'>Order</Link>, '9'),
+    //  getItem('Review', '10')
   ]),
   getItem('Popup', 'sub4', <AppstoreOutlined />, [
     getItem(<Link href='/bg/admin/popup/addPopup'>Add</Link>, '11')

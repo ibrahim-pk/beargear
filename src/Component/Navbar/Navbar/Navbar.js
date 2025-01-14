@@ -20,7 +20,7 @@ const Navbar = () => {
 
     const fetchData = async () => {
       const { data } = await axios.get(
-        `https://server.beargear.com.bd/api/v1/category/get`
+        `http://localhost:5000/api/v1/category/get`
       );
      // console.log(data);
 

@@ -15,6 +15,8 @@ const AddProduct = () => {
 
   const [loader, setLoader] = useState(false);
   const [reLoader, setReLoader] = useState(false);
+  const [imgUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   let jwtToken;
   if (typeof window !== "undefined") {
     jwtToken = JSON.parse(localStorage.getItem("User")) || [];
@@ -24,13 +26,37 @@ const AddProduct = () => {
     Authorization: `Bearer ${jwtToken?.token}`,
   };
 
-  const onFinish = async (values) => {
+  const handleImageUpload = async (e) => {
+    setLoading(true);
+    const imageFile = e.target.files[0];
+    const data = new FormData();
+    data.append("file", imageFile);
+    //your folder name
+    data.append("upload_preset", "WinnerImg");
+    data.append("cloud_name", "ditdynru4");
+    //console.log(imageFile);
 
+    try {
+      const result = await axios.post(
+        //aykhne [Your Cloudinary Cloud Name] baki link thik thak thakbe
+        "https://api.cloudinary.com/v1_1/ditdynru4/image/upload",
+        data
+      );
+      console.log(result?.data?.url);
+      setImageUrl(result?.data?.url);
+      setLoading(false);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const onFinish = async (values) => {
+    values.imageLink = imgUrl;
     //console.log('Received values:', values);
     setLoader(true);
     const { data } = await axios.post(
-      "https://server.beargear.com.bd/api/v1/banner/add",
-      { values},
+      "http://localhost:5000/api/v1/banner/add",
+      { values },
       {
         headers,
       }
@@ -60,17 +86,21 @@ const AddProduct = () => {
         title="Add Product"
       >
         <Form onFinish={onFinish}>
-        <Form.Item name="title" label="Title">
+          <Form.Item name="title" label="Title">
             <Input type="text" placeholder="titile" />
           </Form.Item>
-          <Form.Item name="imageLink" label="image link">
-            <Input type="text" placeholder="image link" />
+          <Form.Item label="Images">
+            <input type="file" onChange={handleImageUpload} className="" />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Add Product
-            </Button>
+            {!loading ? (
+              <Button type="primary" htmlType="submit">
+                Add
+              </Button>
+            ) : (
+              <h1>Uploading...</h1>
+            )}
           </Form.Item>
         </Form>
       </Card>

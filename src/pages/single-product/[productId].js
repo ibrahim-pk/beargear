@@ -42,7 +42,7 @@ const ProductDetails = ({singleProduct}) => {
       <Row justify="space-evenly" gutter={[16, 16]}>
         <Col xs={20} sm={20} md={6} lg={6} xl={6}>
           <Image
-            src={`https://drive.google.com/uc?id=${singleProduct?.image.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]}`}
+            src={singleProduct?.image}
             alt="Product"
             height="400px"
             width="auto"
@@ -101,7 +101,7 @@ ProductDetails.getLayout = function getLayout(page) {
 
 export const getServerSideProps = async ({params}) => {
   //console.log(params);
-  const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProduct/${params.productId}`);
+  const res = await fetch(`http://localhost:5000/api/v1/product/getProduct/${params.productId}`);
   const data = await res.json();
 
   return {

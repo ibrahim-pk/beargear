@@ -44,7 +44,7 @@ const EditProduct = ({singleProduct}) => {
     console.log('Received values:', values,productDetails);
     // setLoader(true);
     // const { data } = await axios.post(
-    //   "https://server.beargear.com.bd/api/v1/product/addProduct",
+    //   "http://localhost:5000/api/v1/product/addProduct",
     //   { values, productDetails },
     //   {
     //     headers,
@@ -73,7 +73,7 @@ const EditProduct = ({singleProduct}) => {
     const fetchData = async () => {
       setLoader(true);
       const { data } = await axios.get(
-        "https://server.beargear.com.bd/api/v1/category/get"
+        "http://localhost:5000/api/v1/category/get"
       );
       setLoader(false);
       setCategory(data);
@@ -210,7 +210,7 @@ EditProduct.getLayout = function getLayout(page) {
 
 export const getServerSideProps = async ({params}) => {
     //console.log(params);
-    const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProduct/${params.editId}`);
+    const res = await fetch(`http://localhost:5000/api/v1/product/getProduct/${params.editId}`);
     const data = await res.json();
   
     return {

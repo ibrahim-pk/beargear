@@ -25,7 +25,7 @@ const profileAddress = () => {
   const onFinish = async(values) => {
     //console.log('Received values:', values);
     setLoader(true)
-    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/user/update/${initialValues?.id}`,values)
+    const {data}=await axios.put(`http://localhost:5000/api/v1/user/update/${initialValues?.id}`,values)
     console.log(data);
     if (data.error) {
       NotificationManager.error("Error message", data.error, 4000);
@@ -44,7 +44,7 @@ const profileAddress = () => {
     const fetchData = async () => {
       try {
         setLoader(true)
-        const { data } = await axios.post('https://server.beargear.com.bd/api/v1/user/verify', {
+        const { data } = await axios.post('http://localhost:5000/api/v1/user/verify', {
           token: jwtToken?.token,
         });
      console.log(data);

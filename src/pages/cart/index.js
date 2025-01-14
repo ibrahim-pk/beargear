@@ -37,11 +37,11 @@ const removeToCart=(id)=>{
                 <List.Item>
                     
                   <List.Item.Meta
-                   avatar={<img style={{width:'150px' ,height:'100px'}} src={`https://drive.google.com/uc?id=${product?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]}`} alt={product.name} />}
+                   avatar={<img style={{width:'150px' ,height:'100px'}} src={product?.image} alt={product.name} />}
                     title={product.title}
                     description={
                       <div>
-                        <p>`Price: $${product.newPrice.toFixed(2)}`</p>
+                        <p>`Price: Tk.{product.newPrice.toFixed(2)}`</p>
                         <p>Qtr:{product.qtr}</p>
                       </div>
                     }
@@ -62,7 +62,7 @@ const removeToCart=(id)=>{
                 <li key={item.id}>{item.title}</li>
               ))}
             </ul>
-            <h3>Total Price: ${total.toFixed(2)}</h3>
+            <h3>Total Price: Tk.{total.toFixed(2)}</h3>
             <button className="productSeatBtn"  >
              {
               total>0?<Link style={{color:'white'}} href='/payment'>Process</Link>:<h3>Order Please</h3>

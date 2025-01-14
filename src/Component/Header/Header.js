@@ -10,7 +10,7 @@ const Header = () => {
   useEffect(()=>{
     const fetchData=async()=>{
       setLoader(true)
-      const {data}=await axios.get('https://server.beargear.com.bd/api/v1/banner/get')
+      const {data}=await axios.get('http://localhost:5000/api/v1/banner/get')
       setLoader(false)
       setBanner(data)
     }
@@ -29,7 +29,7 @@ const Header = () => {
                 <div key={idx}>
                 <img
                  
-                 src={`https://drive.google.com/uc?id=${item?.imageLink?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]}`}
+                 src={item?.imageLink}
                   
                   alt=""
                   width="100%"

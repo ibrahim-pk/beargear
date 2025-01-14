@@ -51,7 +51,7 @@ const ProductPage = () => {
   useEffect(()=>{
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/search/getProducts?name=${name}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
+    const{data}=await axios.get(`http://localhost:5000/api/v1/product/search/getProducts?name=${name}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
     setLoader(false)
     //console.log(data);
     if(data.error){
@@ -243,11 +243,9 @@ const ProductPage = () => {
                         </div>
 
                         <img
-                          src={`https://drive.google.com/uc?id=${
-                            item?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-                          }`}
+                          src={item?.image}
                           alt="product"
-                        
+                          style={{maxHeight:"220px",minHeight:"220px",maxWidth:"210px"}}
                         />
                       </div>
                     }
@@ -307,7 +305,7 @@ ProductPage.getLayout = function getLayout(page) {
 
 // export const getServerSideProps = async ({params}) => {
 //   console.log(params);
-//   const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProducts?cateId=${params.id}`);
+//   const res = await fetch(`http://localhost:5000/api/v1/product/getProducts?cateId=${params.id}`);
 //   const data = await res.json();
 
 //   return {

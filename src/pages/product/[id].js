@@ -51,7 +51,7 @@ const ProductPage = () => {
   useEffect(()=>{
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/category/getProducts?cateId=${id}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
+    const{data}=await axios.get(`http://localhost:5000/api/v1/product/category/getProducts?cateId=${id}&color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=10`)
     setLoader(false)
     if(data.error){
       setAllProduct([])
@@ -111,7 +111,7 @@ const ProductPage = () => {
               margin: "10px 0",
             }}
           >
-            <h3>Color</h3>
+            {/* <h3>Color</h3>
             <Select style={{
               width:'120px'
             }} mode="single" placeholder="Select Colors" onChange={(e)=>setSelectedColorValue(e)}>
@@ -120,7 +120,7 @@ const ProductPage = () => {
                   {color.label}
                 </Select.Option>
               ))}
-            </Select>
+            </Select> */}
           </div>
           <div
             style={{
@@ -172,7 +172,7 @@ const ProductPage = () => {
             </Radio.Group>
           </div>
          
-          <div
+          {/* <div
             style={{
               margin: "10px 0",
             }}
@@ -185,9 +185,9 @@ const ProductPage = () => {
               <Radio value="Green">Green</Radio>
               <br />
               <Radio value="Blue">Blue</Radio>
-              {/* Add more colors as needed */}
+              
             </Radio.Group>
-          </div>
+          </div> */}
           
         </Col>
 
@@ -242,10 +242,9 @@ const ProductPage = () => {
                         </div>
 
                         <img
-                          src={`https://drive.google.com/uc?id=${
-                            item?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-                          }`}
+                          src={item?.image}
                           alt="product"
+                          style={{maxHeight:"220px",minHeight:'220px',maxWidth:"210px"}}
                         
                         />
                       </div>
@@ -306,7 +305,7 @@ ProductPage.getLayout = function getLayout(page) {
 
 // export const getServerSideProps = async ({params}) => {
 //   console.log(params);
-//   const res = await fetch(`https://server.beargear.com.bd/api/v1/product/getProducts?cateId=${params.id}`);
+//   const res = await fetch(`http://localhost:5000/api/v1/product/getProducts?cateId=${params.id}`);
 //   const data = await res.json();
 
 //   return {

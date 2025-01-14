@@ -12,7 +12,7 @@ const AdminRouter = ({ children }) => {
         if (typeof window !== 'undefined') {
           setLoader(true)
           const jwtToken = JSON.parse(localStorage.getItem('User')) || {};
-          const {data}=await axios.post('https://server.beargear.com.bd/api/v1/user/verify',{
+          const {data}=await axios.post('http://localhost:5000/api/v1/user/verify',{
             token:jwtToken?.token
            })
            setLoader(false)

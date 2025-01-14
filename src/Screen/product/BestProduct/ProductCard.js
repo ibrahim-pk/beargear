@@ -32,9 +32,7 @@ const ProductCard = ({ product }) => {
            <div>
            <img 
             className="topProductImg"
-              src={`https://drive.google.com/uc?id=${
-                product?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-              }`}
+              src={product?.image}
               alt="product"
   
             />

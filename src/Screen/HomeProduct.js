@@ -15,7 +15,7 @@ const HomeProduct = () => {
     //console.log(selectedBrandValue,selectedColorValue,selectedPriceValue)
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/home/product`)
+    const{data}=await axios.get(`http://localhost:5000/api/v1/product/home/product`)
     console.log(data);
     setLoader(false)
     if(data.error){
@@ -56,7 +56,6 @@ const HomeProduct = () => {
       <h2 style={{ padding: "20px 0 20px 0px",textAlign:'center' }}>Featured Products</h2>
 
       <div className="productCardHome">
-      
         <Row gutter={[16, 16]} justify="center">
           {allProduct.map((item, idx) => (
             <Col key={idx} xs={11} sm={11} md={7} lg={5} xl={5}>
@@ -90,9 +89,7 @@ const HomeProduct = () => {
                       </div>
                       <img
                        className="homeproductImage"
-                        src={`https://drive.google.com/uc?id=${
-                          item?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-                        }`}
+                        src={item?.image}
                         alt="product"
                        
                       />

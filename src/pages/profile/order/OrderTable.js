@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const RecentOrdersTable = ({ data }) => {
   const handleCancel=async(id)=>{
-    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/cancel/${id}`)
+    const {data}=await axios.put(`http://localhost:5000/api/v1/orders/cancel/${id}`)
     //console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);

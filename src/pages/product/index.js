@@ -44,7 +44,8 @@ const ProductPage = () => {
   
    const fetchData=async()=>{
     setLoader(true)
-    const{data}=await axios.get(`https://server.beargear.com.bd/api/v1/product/getProducts?color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=8`)
+    const{data}=await axios.get(`http://localhost:5000/api/v1/product/getProducts?color=${selectedColorValue}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${selectedPriceValue}&page=${currentPage}&perPage=8`)
+    console.log(data);
     setLoader(false)
     if(data.error){
       setAllProduct([])
@@ -98,7 +99,7 @@ const ProductPage = () => {
             </Select>
           </div>
          
-          <div
+          {/* <div
             style={{
               margin: "10px 0",
             }}
@@ -113,7 +114,7 @@ const ProductPage = () => {
                 </Select.Option>
               ))}
             </Select>
-          </div>
+          </div> */}
           <div
             style={{
               margin: "10px 0",
@@ -147,7 +148,7 @@ const ProductPage = () => {
               <Radio value="1">High Price</Radio>
             </Radio.Group>
           </div>
-          <div
+          {/* <div
             style={{
               margin: "10px 0",
             }}
@@ -160,9 +161,9 @@ const ProductPage = () => {
               <Radio value="Green">Green</Radio>
               <br />
               <Radio value="Blue">Blue</Radio>
-              {/* Add more colors as needed */}
+              
             </Radio.Group>
-          </div>
+          </div> */}
           
         </Col>
 
@@ -217,9 +218,7 @@ const ProductPage = () => {
                         </div>
 
                         <img
-                          src={`https://drive.google.com/uc?id=${
-                            item?.image?.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)[1]
-                          }`}
+                          src={item?.image}
                           alt="product"
                         
                         />

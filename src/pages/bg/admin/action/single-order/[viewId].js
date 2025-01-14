@@ -25,7 +25,7 @@ const View=()=> {
       const headers = {
         'Authorization': `Bearer ${jwtToken?.token}`
       };
-      const {data} = await axios.get(`https://server.beargear.com.bd/api/v1/orders/get/order/${viewId}`,{headers});
+      const {data} = await axios.get(`http://localhost:5000/api/v1/orders/get/order/${viewId}`,{headers});
       //console.log(data?.orders[0]);
       setOrder(data?.orders[0])
       setLoader(false)
@@ -80,7 +80,7 @@ const productList = JSON.parse(order?.productList || '[]');
   };
 
   const handleConfirm=async(id)=>{
-    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/confirm/${id}`)
+    const {data}=await axios.put(`http://localhost:5000/api/v1/orders/confirm/${id}`)
     //console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
@@ -91,7 +91,7 @@ const productList = JSON.parse(order?.productList || '[]');
   }
 
   const handleCancel=async(id)=>{
-    const {data}=await axios.put(`https://server.beargear.com.bd/api/v1/orders/cancel/${id}`)
+    const {data}=await axios.put(`http://localhost:5000/api/v1/orders/cancel/${id}`)
    // console.log(data);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);

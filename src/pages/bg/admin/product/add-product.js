@@ -17,6 +17,8 @@ const AddProduct = () => {
   const [category, setCategory] = useState();
   const [loader, setLoader] = useState(false);
   const [reLoader, setReLoader] = useState(false);
+  const [imgUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   let jwtToken;
   if (typeof window !== "undefined") {
     jwtToken = JSON.parse(localStorage.getItem("User")) || [];
@@ -26,18 +28,37 @@ const AddProduct = () => {
     Authorization: `Bearer ${jwtToken?.token}`,
   };
 
-  const handleImage = (info) => {
-    // if (info.file.status === 'done') {
-    //   console.log(info.file.response.url);
-    //   setImage(info.file.response.url);
-    // }
+  const handleImageUpload = async (e) => {
+    setLoading(true);
+    const imageFile = e.target.files[0];
+    const data = new FormData();
+    data.append("file", imageFile);
+    //your folder name
+    data.append("upload_preset", "WinnerImg");
+    data.append("cloud_name", "ditdynru4");
+    //console.log(imageFile);
+
+    try {
+      const result = await axios.post(
+        //aykhne [Your Cloudinary Cloud Name] baki link thik thak thakbe
+        "https://api.cloudinary.com/v1_1/ditdynru4/image/upload",
+        data
+      );
+      console.log(result?.data?.url);
+      setImageUrl(result?.data?.url);
+      setLoading(false);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const onFinish = async (values) => {
-    //console.log('Received values:', values,selectedImages,productDetails);
+    values.imageLink =imgUrl;
+    //console.log('Received values:',values,selectedImages,productDetails);
+   
     setLoader(true);
     const { data } = await axios.post(
-      "https://server.beargear.com.bd/api/v1/product/addProduct",
+      "http://localhost:5000/api/v1/product/addProduct",
       { values, productDetails },
       {
         headers,
@@ -49,6 +70,7 @@ const AddProduct = () => {
     } else {
       NotificationManager.success("Success message", data.msg, 4000);
       //console.log(data);
+      window.location.reload()
     }
   };
 
@@ -56,7 +78,7 @@ const AddProduct = () => {
     const fetchData = async () => {
       setLoader(true);
       const { data } = await axios.get(
-        "https://server.beargear.com.bd/api/v1/category/get"
+        "http://localhost:5000/api/v1/category/get"
       );
       setLoader(false);
       setCategory(data);
@@ -73,10 +95,6 @@ const AddProduct = () => {
     updatedDetails.splice(index, 1);
     setProductDetails(updatedDetails);
   };
-  const handleImageChange = (e) => {
-    const files = e.target.files;
-    setSelectedImages([...selectedImages, ...files]);
-  };
 
   return (
     <div
@@ -86,7 +104,7 @@ const AddProduct = () => {
         margin: "10px 0",
       }}
     >
-      {loader && <Spinner />}
+      {/* {loader && <Spinner />} */}
       <Card
         style={{
           width: "90%",
@@ -113,22 +131,18 @@ const AddProduct = () => {
           <Form.Item name="newPrice" label="New Price">
             <Input type="number" placeholder="New Price" />
           </Form.Item>
-          <Form.Item name="imageLink" label="image link">
+          {/* <Form.Item name="imageLink" label="image link">
             <Input type="text" placeholder="image link" />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item name="stock" label="product stock">
             <Input type="number" placeholder="stock" />
           </Form.Item>
-          {/* <Form.Item label="Product Images">
-        <input
-          type="file"
-          multiple
-          onChange={handleImageChange}
-        />
-        </Form.Item> */}
-          <Form.Item label="Image">
+          <Form.Item label="Product Images">
+            <input type="file" onChange={handleImageUpload} className="" />
+          </Form.Item>
+
+          {/* <Form.Item label="Image">
             <Upload
-              action="/api/upload"
               listType="picture-card"
               onChange={handleImage}
             >
@@ -138,7 +152,7 @@ const AddProduct = () => {
                 "Upload"
               )}
             </Upload>
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item label="Product Details">
             <Button
               type="dashed"
@@ -171,9 +185,13 @@ const AddProduct = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Add Product
-            </Button>
+            {!loading ? (
+              <Button type="primary" htmlType="submit">
+                Add Product
+              </Button>
+            ) : (
+              <h1>Uploading...</h1>
+            )}
           </Form.Item>
         </Form>
       </Card>

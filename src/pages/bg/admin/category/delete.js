@@ -15,7 +15,7 @@ const CategoryPage = () => {
   useEffect(()=>{
     const fetchData=async()=>{
       setLoader(true)
-      const {data}=await axios.get('https://server.beargear.com.bd/api/v1/category/get')
+      const {data}=await axios.get('http://localhost:5000/api/v1/category/get')
       setLoader(false)
       setCategory(data)
     }
@@ -24,7 +24,7 @@ const CategoryPage = () => {
   },[reLoader])
 
   const handleDelete = async(categoryId) => {
-    const {data}=await axios.delete(`https://server.beargear.com.bd/api/v1/category/${categoryId}`)
+    const {data}=await axios.delete(`http://localhost:5000/api/v1/category/${categoryId}`)
     // console.log(categoryId);
     if(data.error){
       NotificationManager.error('Error message', data.error, 4000);
