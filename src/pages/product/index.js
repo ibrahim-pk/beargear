@@ -21,12 +21,12 @@ const ProductPage = () => {
   //console.log(allProduct);
   const [allProduct, setAllProduct] = useState([]);
   const [priceRange, setPriceRange] = useState([]);
-  const [currentPage, setCurrentPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loader, setLoader] = useState(false);
   const [reLoader, setReLoader] = useState(false);
   const [selectedPriceValue, setSelectedPriceValue] = useState(null); 
   const [selectedColorValue, setSelectedColorValue] = useState('');
-  const [minPrice, setMinPrice] = useState(300);
+  const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(2000);
   
 
@@ -184,7 +184,7 @@ const ProductPage = () => {
                 xs={11}
                 sm={11}
                 md={7}
-                lg={6}>
+                lg={8}>
                 <Link href={`/single-product/${item.id}`}>
                   <Card
                     className="productCard"

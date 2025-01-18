@@ -14,7 +14,7 @@ const ReviewForm = ({id}) => {
      jwtToken = JSON.parse(localStorage.getItem('User')) || [];
     
   }
- // console.log(jwtToken.token);
+  console.log(jwtToken.token);
   const headers = {
     'Authorization': `Bearer ${jwtToken?.token}`
   };
@@ -57,7 +57,7 @@ const ReviewForm = ({id}) => {
       </Form.Item>
       <Form.Item>
         {
-          jwtToken?.token?<Button type="primary" htmlType="submit">
+          jwtToken?<Button type="primary" htmlType="submit">
           Submit Review
         </Button>:<Link style={{
           color:'red'

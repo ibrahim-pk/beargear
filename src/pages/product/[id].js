@@ -27,7 +27,7 @@ const ProductPage = () => {
   const [selectedPriceValue, setSelectedPriceValue] = useState(null); 
 
   const [selectedColorValue, setSelectedColorValue] = useState('');
-  const [minPrice, setMinPrice] = useState(300);
+  const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(2000);
 
   const router = useRouter();
@@ -208,7 +208,7 @@ const ProductPage = () => {
                 xs={11}
                 sm={11}
                 md={7}
-                lg={6}>
+                lg={8}>
                 <Link href={`/single-product/${item.id}`}>
                   <Card
                     className="productCard"

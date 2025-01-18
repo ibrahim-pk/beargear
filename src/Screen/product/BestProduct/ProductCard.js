@@ -4,8 +4,10 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 const ProductCard = ({ product }) => {
-  const initialValue = 4;
+  
+
   const addToCart = (product) => {
+    
     const existingCartItem = JSON.parse(localStorage.getItem("Cart")) || [];
 
     const productInCart = existingCartItem?.find(
@@ -24,8 +26,8 @@ const ProductCard = ({ product }) => {
   };
   return (
     <div className="productCardHome">
-      <Link href="/single-product/1">
-        <Card 
+      <Link href={`/single-product/${product.id}`}>
+        <Card
         className="productCard"
         hoverable title={product.title}>
           

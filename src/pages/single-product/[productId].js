@@ -10,8 +10,8 @@ import { useState } from "react";
 const ProductDetails = ({singleProduct}) => {
   const router = useRouter();
   const[loader,setLoader]=useState(false)
-  
-  const productDetailsArray = JSON.parse(singleProduct?.productDetails);
+   console.log("singleProduct:",singleProduct)
+  const productDetailsArray = JSON.parse(singleProduct?.productDetails|| 0);
   //console.log(productDetailsArray)
 
   const addToCart = (product) => {
@@ -34,6 +34,27 @@ const ProductDetails = ({singleProduct}) => {
     
   };
 
+  const handleBuyNow=(product)=>{
+    
+    const existingCartItem = JSON.parse(localStorage.getItem("Cart")) || [];
+
+    const productInCart = existingCartItem?.find(
+      (item) => item.id === product.id
+    );
+
+    if (productInCart) {
+      productInCart.qtr += 1;
+    } else {
+      existingCartItem.push({ ...product, qtr: 1 });
+    }
+
+    localStorage.setItem("Cart", JSON.stringify(existingCartItem));
+    window.location.href="/payment"
+
+    
+  };
+  
+
   return (
     <div style={{ marginTop: "20px" }}>
       {
@@ -53,7 +74,7 @@ const ProductDetails = ({singleProduct}) => {
             <Card title={<h3><b>{singleProduct.title}</b></h3>}>
               <h4 style={{marginBottom:'15px'}}>Price:{singleProduct.newPrice}Tk</h4>
               <Button onClick={() => addToCart(singleProduct)} type="primary">Add to Cart</Button>
-              <Button type="danger">Buy Now</Button>
+              <Button type="danger" onClick={()=>handleBuyNow(singleProduct)}>Buy Now</Button>
             </Card>
           </div>
           <div style={{ marginTop: "20px", marginBottom: "20px" }}>

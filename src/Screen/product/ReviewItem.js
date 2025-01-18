@@ -3,6 +3,7 @@ import React from 'react';
 import { Avatar, Rate, Tooltip } from 'antd';
 
 const ReviewItem = ({ review }) => {
+  console.log("reviewItem",review)
   return (
     <div className="review-item">
       <div className="review-header">
